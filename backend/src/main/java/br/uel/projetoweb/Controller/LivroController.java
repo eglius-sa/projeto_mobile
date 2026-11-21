@@ -7,10 +7,8 @@ import jakarta.validation.Valid;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 //import java.util.List;
 //package br.uel.Livro.Controller;
 //import br.uel.Livro.Service.LivroService;
@@ -20,9 +18,7 @@ import org.springframework.validation.BindingResult;
 //import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.ui.Model;
 
 import java.util.List;
 //import java.util.List;
@@ -42,59 +38,23 @@ public class LivroController {
         return ResponseEntity.ok(service.listarLivros());
     }
 
-    @GetMapping("/novo")
-    public String abrirCadastro(Model model) {
-        model.addAttribute("livro", new Livro());
-        return "Livros/form";
-    }
-
     @PostMapping
-    public String cadastrar(@Valid @ModelAttribute Livro livro,
-                            BindingResult erros, RedirectAttributes ra,
-                            @RequestParam(value = "arquivo", required = false) MultipartFile imagem) {
-        if (erros.hasErrors()) {
-            return "Livros/form";
-        }
-        try{
-            service.cadastrarLivro(livro, imagem);
-            ra.addFlashAttribute("msgSucesso", "Livro cadastrado!");
-            return "redirect:/Livros";
-        } catch (IllegalArgumentException e) {
-            ra.addFlashAttribute("msgErro", e.getMessage());
-            return "redirect:/Livros/novo";
-        }
-
-    }
-
-    @GetMapping("/editar/{id}")
-    public String abrirEdicao(@PathVariable Long id, Model model) {
-        model.addAttribute("livro", service.buscarLivroPorId(id));
-        return "Livros/form";
+    public ResponseEntity<Livro> cadastrar(@Valid @ModelAttribute Livro livro) {
+        Livro salvo = service.cadastrarLivro(livro);
+        return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 
     @PutMapping("/{id}")
-    public String atualizar(@PathVariable Long id, @Valid
-                            @ModelAttribute Livro livro, BindingResult erros,
-                            RedirectAttributes ra,
-                            @RequestParam(value = "arquivoAtualizado", required = false) MultipartFile imagem) {
-        if (erros.hasErrors()) {
-            return "Livros/form";
-        }
-        try{
-            service.atualizarLivro(id, livro, imagem);
-            ra.addFlashAttribute("msgSucesso", "Livro atualizado!");
-            return "redirect:/Livros";
-        }catch (IllegalArgumentException e) {
-            ra.addFlashAttribute("msgErro", e.getMessage());
-            return "redirect:/Livros/editar/" + id;
-        }
+    public ResponseEntity<Livro> atualizar(@PathVariable Long id, @Valid
+                            @ModelAttribute Livro livro) {
+        Livro atualizado = service.atualizarLivro(id, livro);
+        return ResponseEntity.ok(atualizado);
 
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id, RedirectAttributes ra) {
         service.excluirLivro(id);
-        ra.addFlashAttribute("msgExcluido", "Livro excluído!");
         return ResponseEntity.noContent().build();
     }
 }

@@ -26,27 +26,7 @@ public class LivroService {
         return livroRepository.findAll(Sort.by("titulo").ascending());
     }
 
-    public Livro cadastrarLivro(Livro livro, MultipartFile imagem){
-        if(imagem !=null && !imagem.isEmpty()){
-
-            String nomeArquivo = imagem.getOriginalFilename();
-            Path pasta = Paths.get("uploads/images");
-
-            try {
-                Files.createDirectories(pasta);
-                Path caminho = pasta.resolve(nomeArquivo);
-
-                Files.copy(
-                        imagem.getInputStream(),
-                        caminho,
-                        StandardCopyOption.REPLACE_EXISTING
-                );
-
-                livro.setImagem(nomeArquivo);
-            } catch (IOException e) {
-                throw new RuntimeException("Erro ao adicionar imagem",e);
-            }
-        }
+    public Livro cadastrarLivro(Livro livro){
         if(livroRepository.existsByIsbn(livro.getIsbn())){
             throw new IllegalArgumentException("ISBN já cadastrado");
         }
@@ -57,7 +37,7 @@ public class LivroService {
         return livroRepository.findById(id).orElse(null);
     }
 
-    public Livro atualizarLivro(Long id, Livro livroAtualizado, MultipartFile imagem){
+    public Livro atualizarLivro(Long id, Livro livroAtualizado){
         Livro livro = buscarLivroPorId(id);
 
         if(livroRepository.existsByIsbnAndIdNot(livroAtualizado.getIsbn(),id)){
@@ -72,26 +52,6 @@ public class LivroService {
             livro.setAno(livroAtualizado.getAno());
             livro.setExemplar(livroAtualizado.getExemplar());
 
-            if(imagem !=null && !imagem.isEmpty()){
-
-                String nomeArquivo = imagem.getOriginalFilename();
-                Path pasta = Paths.get("uploads/images");
-
-                try {
-                    Files.createDirectories(pasta);
-                    Path caminho = pasta.resolve(nomeArquivo);
-
-                    Files.copy(
-                            imagem.getInputStream(),
-                            caminho,
-                            StandardCopyOption.REPLACE_EXISTING
-                    );
-
-                    livro.setImagem(nomeArquivo);
-                } catch (IOException e) {
-                    throw new RuntimeException("Erro ao adicionar imagem",e);
-                }
-            }
             return livroRepository.save(livro);
         } else{
             throw new RuntimeException("Livro não encontrado por id: " + id);
