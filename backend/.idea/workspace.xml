@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b69c4313-6da0-4c29-87c3-2465a3ff2f02" name="Changes" comment="Comit inicial" />
+    <list default="true" id="b69c4313-6da0-4c29-87c3-2465a3ff2f02" name="Changes" comment="Ajuste da Controller e service para RestAPI:&#10;listar() e excluir()" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +18,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -28,8 +28,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/eglius-sa/projetomobile&quot;,
-    &quot;accountId&quot;: &quot;6cf512f3-6639-4e2a-abe7-f69bd4aaf3bc&quot;
+    &quot;url&quot;: &quot;https://github.com/eglius-sa/projeto_mobile.git&quot;,
+    &quot;accountId&quot;: &quot;3676d589-1f0b-4f60-ab59-c1c1bce544f1&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -38,6 +38,65 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0001502861832696" />
+      <entry key="MS500" value="1.17194708191152" />
+      <entry key="S2" value="1.710612264234951" />
+      <entry key="S5" value="2.641743393996033" />
+      <entry key="S10" value="4.750325545371058" />
+      <entry key="S30" value="11.750600573056353" />
+      <entry key="S60" value="16.819143489161938" />
+      <entry key="M2" value="22.002982371105464" />
+      <entry key="M5" value="29.25071725269978" />
+      <entry key="M10" value="33.65182774446677" />
+      <entry key="M15" value="35.50763989258211" />
+      <entry key="M30" value="37.610489539398124" />
+      <entry key="H1" value="38.76668838184813" />
+      <entry key="H2" value="39.373341044270425" />
+      <entry key="H4" value="39.68412266677379" />
+      <entry key="D1" value="39.94699583906712" />
+      <entry key="W1" value="39.99241915757974" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="5.192177032727693E-190" />
+      <entry key="S2" value="4.927082165209447E-48" />
+      <entry key="S5" value="1.4772955290304725E-19" />
+      <entry key="S10" value="5.181799909587105E-10" />
+      <entry key="S30" value="0.0015564309469390746" />
+      <entry key="S60" value="0.0868532690143822" />
+      <entry key="M2" value="0.738700633470749" />
+      <entry key="M5" value="2.8095168555500356" />
+      <entry key="M10" value="4.4248160868080815" />
+      <entry key="M15" value="5.153249429347742" />
+      <entry key="M30" value="6.004574905960228" />
+      <entry key="H1" value="6.482810917774081" />
+      <entry key="H2" value="6.736340055137526" />
+      <entry key="H4" value="6.866878262029183" />
+      <entry key="D1" value="6.9776314324087725" />
+      <entry key="W1" value="6.996800013752454" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9461978686927586" />
+      <entry key="MS500" value="1.1585507636022245" />
+      <entry key="S2" value="1.7053349673538556" />
+      <entry key="S5" value="2.6379261247002868" />
+      <entry key="S10" value="4.74628379082945" />
+      <entry key="S30" value="11.734907095252563" />
+      <entry key="S60" value="16.869789515010627" />
+      <entry key="M2" value="22.684829960966702" />
+      <entry key="M5" value="31.999914071675086" />
+      <entry key="M10" value="38.03275285652802" />
+      <entry key="M15" value="40.627565898294684" />
+      <entry key="M30" value="43.596045295153054" />
+      <entry key="H1" value="45.239330719009224" />
+      <entry key="H2" value="46.104422520544624" />
+      <entry key="H4" value="46.548326819062254" />
+      <entry key="D1" value="46.92417525282685" />
+      <entry key="W1" value="46.98915444069327" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7,
@@ -48,30 +107,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "novamain",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Natalia/IdeaProjects/projetomobile/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/Java/projeto_mobile/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="ProjetowebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="projetoweb" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.uel.projetoweb.ProjetowebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.337" />
+        <option value="bundled-jdk-30f59d01ecdd-a9fadf26ba24-intellij.indexing.shared.core-IU-262.12573.28" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.12573.28" />
       </set>
     </attachedChunks>
   </component>
@@ -100,9 +170,13 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <MESSAGE value="Incio com a model" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Comit inicial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comit inicial" />
+    <MESSAGE value="Ajuste da Controller e service para RestAPI:&#10;listar() e excluir()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajuste da Controller e service para RestAPI:&#10;listar() e excluir()" />
   </component>
 </project>

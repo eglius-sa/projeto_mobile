@@ -1,10 +1,10 @@
-package br.uel.backend;
+package br.uel.projetoweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class ProjetowebApplicationTests {
 
 	@Test
 	void contextLoads() {

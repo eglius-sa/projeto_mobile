@@ -1,4 +1,4 @@
-package br.uel.backend.Model;
+package br.uel.projetoweb.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -55,4 +55,3 @@ public class Livro {
     private int exemplar;
 // Getters e setters
 }
-

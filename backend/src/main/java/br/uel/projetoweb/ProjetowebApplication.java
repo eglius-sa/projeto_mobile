@@ -1,13 +1,13 @@
-package br.uel.backend;
+package br.uel.projetoweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackendApplication {
+public class ProjetowebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendApplication.class, args);
+		SpringApplication.run(ProjetowebApplication.class, args);
 	}
 
 }
