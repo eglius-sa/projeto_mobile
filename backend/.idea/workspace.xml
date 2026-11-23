@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b69c4313-6da0-4c29-87c3-2465a3ff2f02" name="Changes" comment="Ajuste da Controller e service para RestAPI:&#10;cadastrar(), excluir() e atualizar()">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/uel/projetoweb/Exception/ApiExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/uel/projetoweb/Exception/LivroNaoEncontradoException.java" afterDir="false" />
+    <list default="true" id="b69c4313-6da0-4c29-87c3-2465a3ff2f02" name="Changes" comment="Alterado @ModelAtribute para @RequestBody, Alterada regra da Service para atualizar ou excluir usando Exception">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/uel/projetoweb/Controller/LivroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/uel/projetoweb/Controller/LivroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/uel/projetoweb/Service/LivroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/uel/projetoweb/Service/LivroService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +102,9 @@
       <entry key="W1" value="84.92006287785058" />
     </decayedShown>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7,
   &quot;fromUser&quot;: false
@@ -183,6 +186,8 @@
     <MESSAGE value="Comit inicial" />
     <MESSAGE value="Ajuste da Controller e service para RestAPI:&#10;listar() e excluir()" />
     <MESSAGE value="Ajuste da Controller e service para RestAPI:&#10;cadastrar(), excluir() e atualizar()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajuste da Controller e service para RestAPI:&#10;cadastrar(), excluir() e atualizar()" />
+    <MESSAGE value="Tratamento erros" />
+    <MESSAGE value="Alterado @ModelAtribute para @RequestBody, Alterada regra da Service para atualizar ou excluir usando Exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alterado @ModelAtribute para @RequestBody, Alterada regra da Service para atualizar ou excluir usando Exception" />
   </component>
 </project>

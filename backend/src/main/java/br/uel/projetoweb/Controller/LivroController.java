@@ -18,10 +18,9 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+//import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-//import java.util.List;
 
 @RestController
 @RequestMapping("/api/Livros")
@@ -39,21 +38,21 @@ public class LivroController {
     }
 
     @PostMapping
-    public ResponseEntity<Livro> cadastrar(@Valid @ModelAttribute Livro livro) {
+    public ResponseEntity<Livro> cadastrar(@Valid @RequestBody Livro livro) {
         Livro salvo = service.cadastrarLivro(livro);
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Livro> atualizar(@PathVariable Long id, @Valid
-                            @ModelAttribute Livro livro) {
+            @RequestBody Livro livro) {
         Livro atualizado = service.atualizarLivro(id, livro);
         return ResponseEntity.ok(atualizado);
 
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable Long id, RedirectAttributes ra) {
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
         service.excluirLivro(id);
         return ResponseEntity.noContent().build();
     }
