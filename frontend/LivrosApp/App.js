@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import LivroListScreen from "./src/screens/LivroListScreen";
+import LivroFormScreen from "./src/screens/LivroFormScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="LivroList"
+        screenOptions={{
+          headerStyle: { backgroundColor: "#1A237E" },
+          headerTintColor: "#FFF",
+          headerTitleStyle: { fontWeight: "600" },
+        }}
+      >
+        <Stack.Screen
+          name="LivroList"
+          component={LivroListScreen}
+          options={{ title: "Gerenciamento de Clientes" }}
+        />
+        <Stack.Screen
+          name="LivroForm"
+          component={LivroFormScreen}
+          options={{ title: "Gerenciamento de Clientes" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

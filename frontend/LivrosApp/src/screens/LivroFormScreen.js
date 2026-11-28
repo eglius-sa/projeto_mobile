@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
-import { api } from "../services/api";
+import { api } from "../service/api";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const PLACEHOLDER_COLOR = "#9CA3AF";
@@ -25,36 +25,37 @@ export default function CLivroFormScreen({ route, navigation }) {
   const [errors, setErrors] = useState({});
 
   async function handleSave() {
-    const idadeNumber = idade.trim() === "" ? null : Number(idade);
+  const payload = {
+    titulo: titulo.trim(),
+    autor: autor.trim(),
+    isbn: isbn.trim(),
+    edicao: edicao.trim(),
+    ano: Number(ano),
+    exemplar: Number(exemplar),
+  };
 
-    const payload = {
-      nome: nome.trim(),
-      email: email.trim(),
-      idade: idadeNumber,
-    };
+  try {
+    setSaving(true);
 
-    try {
-      setSaving(true);
-
-      if (mode === "edit" && livro?.id) {
-        await api.put(`/livro/${livro.id}`, payload);
-        onSuccess?.("Livro atualizado com sucesso!");
-      } else {
-        await api.post("/livro", payload);
-        onSuccess?.("Livro cadastrado com sucesso!");
-      }
-
-      navigation.goBack();
-    } catch (error) {
-      if (error.response?.data?.errors) {
-        setErrors(error.response.data.errors);
-      } else {
-        setErrors({ general: "Não foi possível salvar o livro." });
-      }
-    } finally {
-      setSaving(false);
+    if (mode === "edit" && livro?.id) {
+      await api.put(`/livro/${livro.id}`, payload);
+      onSuccess?.("Livro atualizado com sucesso!");
+    } else {
+      await api.post("/livro", payload);
+      onSuccess?.("Livro cadastrado com sucesso!");
     }
+
+    navigation.goBack();
+  } catch (error) {
+    if (error.response?.data?.errors) {
+      setErrors(error.response.data.errors);
+    } else {
+      setErrors({ general: "Não foi possível salvar o livro." });
+    }
+  } finally {
+    setSaving(false);
   }
+}
 
   return (
     <SafeAreaView style={styles.safeArea} edges={["bottom", "top"]}>
@@ -68,51 +69,51 @@ export default function CLivroFormScreen({ route, navigation }) {
             <Text style={styles.errorBannerText}>{errors.general}</Text>
           </View>
         )}
-        <Text style={styles.label}>Nome</Text>
+        <Text style={styles.label}>Título</Text>
         <TextInput
           style={styles.input}
-          value={nome}
-          onChangeText={(text) => {
-            setNome(text);
-            setErrors((prev) => ({ ...prev, nome: null }));
-          }}
-          placeholder="Nome do livro"
-          placeholderTextColor={PLACEHOLDER_COLOR}
-          maxLength={100}
+          value={titulo}
+          onChangeText={setTitulo}
+          placeholder="Título do livro"
         />
-        {errors.nome && <Text style={styles.errorText}>{errors.nome}</Text>}
+        {errors.titulo && <Text style={styles.errorText}>{errors.titulo}</Text>}
 
-        <Text style={styles.label}>E-mail</Text>
+        <Text style={styles.label}>Autor</Text>
         <TextInput
           style={styles.input}
-          value={email}
-          onChangeText={(text) => {
-            setEmail(text);
-            setErrors((prev) => ({ ...prev, email: null }));
-          }}
-          placeholder="exemplo@email.com"
-          placeholderTextColor={PLACEHOLDER_COLOR}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          maxLength={150}
+          value={autor}
+          onChangeText={setAutor}
+          placeholder="Nome do autor"
         />
-        {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+        {errors.autor && <Text style={styles.errorText}>{errors.autor}</Text>}
 
-        <Text style={styles.label}>Idade</Text>
+        <Text style={styles.label}>ISBN</Text>
         <TextInput
           style={styles.input}
-          value={idade}
-          onChangeText={(text) => {
-            // keyboardType só muda o teclado virtual; filtramos para aceitar apenas dígitos.
-            setIdade(text.replace(/\D/g, ""));
-            setErrors((prev) => ({ ...prev, idade: null }));
-          }}
-          placeholder="Idade do livro"
-          placeholderTextColor={PLACEHOLDER_COLOR}
-          keyboardType="number-pad"
-          maxLength={3}
+          value={isbn}
+          onChangeText={setIsbn}
+          placeholder="ISBN do livro"
         />
-        {errors.idade && <Text style={styles.errorText}>{errors.idade}</Text>}
+        {errors.isbn && <Text style={styles.errorText}>{errors.isbn}</Text>}
+
+        <Text style={styles.label}>Edição</Text>
+        <TextInput
+          style={styles.input}
+          value={edicao}
+          onChangeText={setEdicao}
+          placeholder="Edição"
+        />
+        {errors.edicao && <Text style={styles.errorText}>{errors.edicao}</Text>}
+
+        <Text style={styles.label}>Ano</Text>
+        <TextInput
+          style={styles.input}
+          value={ano}
+          onChangeText={setAno}
+          placeholder="Ano de publicação"
+          keyboardType="numeric"
+        />
+        {errors.ano && <Text style={styles.errorText}>{errors.ano}</Text>}
 
         <Pressable
           style={[styles.button, saving && styles.buttonDisabled]}

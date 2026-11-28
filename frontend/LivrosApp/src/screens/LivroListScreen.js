@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { api } from "../services/api";
+import { api } from "../service/api";
 import { mostrarAlerta, confirmar } from "../utils/alerts";
 import LivroItem from "../components/LivroItem";
 
@@ -57,13 +57,13 @@ export default function LivroListScreen({ navigation }) {
 
   useFocusEffect(
     useCallback(() => {
-      carregarLivross();
+      carregarLivros();
     }, [])
   );
 
   const onRefresh = () => {
     setRefreshing(true);
-    carregarLivross(false);
+    carregarLivros(false);
   };
 
   function handleAdd() {
