@@ -16,7 +16,7 @@ export default function LivroItem({ livro, onPress, onDelete }) {
         </View>
       </View>
 
-      <Text style={styles.itemISBN}>{livro.ISBN}</Text>
+      <Text style={styles.itemIsbn}>{livro.Isbn}</Text>
       {livro.ano && livro.adicao && (
         <Text style={styles.itemAutor}>Autor {livro.autor}</Text>
       )}
