@@ -15,8 +15,8 @@ public class CorsConfig {
             public void addCorsMappings(@NonNull CorsRegistry registry) {
                 registry.addMapping("/api/∗∗")
                         .allowedOrigins(
-                                "http://localhost:8081",
-                                "http://192.168.1.19:8081" //http://<IP−DO−COMPUTADOR>:8081
+                                "http://localhost:8080",
+                                "http://192.168.3.85:8080" //http://<IP−DO−COMPUTADOR>:8081
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                                         .allowedHeaders("∗");
